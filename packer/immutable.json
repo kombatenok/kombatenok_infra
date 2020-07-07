@@ -1,13 +1,12 @@
 {
     "variables":
 	{
-	    "project_id": "",
-	    "source_image_family": "",
+	    "project_id": null,
+	    "machine_type": "g1-small",
 	    "zone": "us-central1-a",
 	    "image_description": "",
 	    "disk_type": "",
-	    "tags": "",
-	    "ssh_username": ""
+	    "tags": ""
 	},
     "builders": [
         {
@@ -17,9 +16,9 @@
             "image_family": "{{ user `image_family`}}",
             "source_image_family": "{{ user `source_image_family` }}",
             "zone": "{{ user `zone` }}",
-            "ssh_username": "{{ user `ssh_username` }}",
+            "ssh_username": "kombatenok",
             "machine_type": "{{ user `machine_type` }}",
-	    "image_description": "{{ user `image_description` }}",
+	    "image_description": "{{ `image_description` }}",
 	    "disk_size": "{{user `disk_size` }}",
 	    "disk_type": "{{ user `disk_type` }}",
 	    "network": "{{ user `network` }}",
@@ -36,6 +35,16 @@
 	"type": "shell",
 	"script": "scripts/install_mongodb.sh",
 	"execute_command": "sudo {{.Path}}"
-	}
+        },
+	{
+        "type": "shell",
+        "script": "scripts/deploy.sh",
+        "execute_command": "sudo {{.Path}}"
+        },
+        {
+        "type": "file",
+        "source": "files/puma.service",
+        "destination": "/home/kombatenok/puma.service"
+        }
     ]
 }

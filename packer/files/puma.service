@@ -1,0 +1,15 @@
+[UNIT]
+Description=PumaApp
+After=network.taget
+After=mongodb.service
+Reqires=mongodb.service
+[Service]
+Type=simple
+WorkingDirectory=/home/kombatenok/reddit
+User=kombatenok
+Group=kombatenok
+ExecStart=/usr/local/bin/puma
+ExecStop=/usr/local/bin/puma
+Restart=always
+[Install]
+WantedBy=multi-user.taget
