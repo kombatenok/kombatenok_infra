@@ -1,11 +1,13 @@
-[UNIT]
-After=network.taget
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
 [Service]
 Type=simple
-WorkingDirectory=/home/kombatenok/reddit
 User=kombatenok
-Group=kombatenok
-ExecStart=/usr/local/bin/puma
+WorkingDirectory=/home/kombatenok/reddit
+ExecStart=/bin/bash -lc 'puma'
 Restart=always
+
 [Install]
-WantedBy=multi-user.taget
+WantedBy=multi-user.target

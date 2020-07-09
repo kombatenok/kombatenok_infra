@@ -17,7 +17,7 @@ resource "google_compute_instance" "app" {
 # определение загрузочного диска
     boot_disk {
       initialize_params {
-	image = "reddit-base-1594136767"
+	image = "reddit-base"
       }
     }
 # определение сетевого интерфейса
@@ -57,6 +57,6 @@ resource "google_compute_firewall" "firewall_puma" {
 # Каким адресам разрешаем доступ
 	source_ranges = ["0.0.0.0/0"]
 # Правило применимо для инстансов с перечисленными тэгами
-#	target_tags = ["reddit-app"]
+	target_tags = ["reddit-app"]
 } 
 
