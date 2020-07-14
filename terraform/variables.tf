@@ -28,3 +28,7 @@ variable zone {
   # Значение по умолчанию
   default = "europe-west1"
 }
+variable count_num {
+  description = "number of counts"
+  default = "1"
+}
